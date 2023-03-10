@@ -42,9 +42,7 @@ extension CropView {
         }
         
         // A resize event has begun by grabbing the crop UI, so notify delegate
-      if cropViewConfig.isResizeAllowed {
         delegate?.cropViewDidBeginResize(self)
-      }
         
         if touch.view is RotationDial {
             viewModel.setTouchRotationBoardStatus()
@@ -52,7 +50,7 @@ extension CropView {
         }
         
         let point = touch.location(in: self)
-        viewModel.prepareForCrop(byTouchPoint: point)
+      viewModel.prepareForCrop(byTouchPoint: point, isResizeAllowed: cropViewConfig.isResizeAllowed)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

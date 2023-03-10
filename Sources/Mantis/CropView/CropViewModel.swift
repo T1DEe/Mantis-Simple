@@ -128,11 +128,13 @@ class CropViewModel: CropViewModelProtocol {
         return rotationType == .none || rotationType == .counterclockwise180
     }
 
-    func prepareForCrop(byTouchPoint point: CGPoint) {
+  func prepareForCrop(byTouchPoint point: CGPoint, isResizeAllowed: Bool) {
         panOriginPoint = point
         cropBoxOriginFrame = cropBoxFrame
         
-        tappedEdge = cropEdge(forPoint: point)
+    if isResizeAllowed {
+      tappedEdge = cropEdge(forPoint: point)
+    }
         
         if tappedEdge == .none {
             setTouchImageStatus()

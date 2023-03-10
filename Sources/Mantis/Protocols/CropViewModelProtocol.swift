@@ -39,7 +39,7 @@ protocol CropViewModelProtocol: AnyObject {
     func getTotalRadians() -> CGFloat
     func getRatioType(byImageIsOriginalHorizontal isHorizontal: Bool) -> RatioType
     func isUpOrUpsideDown() -> Bool
-    func prepareForCrop(byTouchPoint point: CGPoint)
+  func prepareForCrop(byTouchPoint point: CGPoint, isResizeAllowed: Bool)
     
     func needCrop() -> Bool
     
