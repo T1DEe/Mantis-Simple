@@ -42,7 +42,9 @@ extension CropView {
         }
         
         // A resize event has begun by grabbing the crop UI, so notify delegate
+      if cropViewConfig.isResizeAllowed {
         delegate?.cropViewDidBeginResize(self)
+      }
         
         if touch.view is RotationDial {
             viewModel.setTouchRotationBoardStatus()
