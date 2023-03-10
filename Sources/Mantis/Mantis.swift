@@ -112,7 +112,11 @@ private func buildCropWorkbenchView(with cropViewConfig: CropViewConfig, and ima
                    imageContainer: imageContainer)
 }
 
-private func buildCropMaskViewManager(with cropViewConfig: CropViewConfig) -> CropMaskViewManagerProtocol {
+private func buildCropMaskViewManager(with cropViewConfig: CropViewConfig) -> CropMaskViewManagerProtocol? {
+  guard cropViewConfig.showDimming else {
+    return nil
+  }
+  
     let dimmingView = CropDimmingView(cropShapeType: cropViewConfig.cropShapeType)
     let visualEffectView = CropMaskVisualEffectView(cropShapeType: cropViewConfig.cropShapeType,
                                                     effectType: cropViewConfig.cropMaskVisualEffectType)

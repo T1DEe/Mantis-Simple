@@ -99,7 +99,7 @@
 		OBJ_89 /* LocalizedHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* LocalizedHelper.swift */; };
 		OBJ_90 /* Mantis.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Mantis.swift */; };
 		OBJ_91 /* CropDimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* CropDimmingView.swift */; };
-		OBJ_92 /* CropMaskProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* CropMaskProtocal.swift */; };
+		OBJ_92 /* CropMaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* CropMaskProtocol.swift */; };
 		OBJ_93 /* CropVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* CropVisualEffectView.swift */; };
 		OBJ_94 /* RatioOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* RatioOptions.swift */; };
 		OBJ_95 /* CGAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* CGAngle.swift */; };
@@ -220,7 +220,7 @@
 		OBJ_35 /* LocalizedHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedHelper.swift; sourceTree = "<group>"; };
 		OBJ_36 /* Mantis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mantis.swift; sourceTree = "<group>"; };
 		OBJ_38 /* CropDimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropDimmingView.swift; sourceTree = "<group>"; };
-		OBJ_39 /* CropMaskProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropMaskProtocal.swift; sourceTree = "<group>"; };
+		OBJ_39 /* CropMaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropMaskProtocol.swift; sourceTree = "<group>"; };
 		OBJ_40 /* CropVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropVisualEffectView.swift; sourceTree = "<group>"; };
 		OBJ_41 /* RatioOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioOptions.swift; sourceTree = "<group>"; };
 		OBJ_43 /* CGAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGAngle.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_38 /* CropDimmingView.swift */,
-				OBJ_39 /* CropMaskProtocal.swift */,
+				OBJ_39 /* CropMaskProtocol.swift */,
 				OBJ_40 /* CropVisualEffectView.swift */,
 			);
 			path = MaskBackground;
@@ -729,7 +729,7 @@
 				OBJ_90 /* Mantis.swift in Sources */,
 				5F17E40A253535F300A3EB7D /* Orientation.swift in Sources */,
 				OBJ_91 /* CropDimmingView.swift in Sources */,
-				OBJ_92 /* CropMaskProtocal.swift in Sources */,
+				OBJ_92 /* CropMaskProtocol.swift in Sources */,
 				FEDAAD8C25205DE900D95667 /* RatioItemView.swift in Sources */,
 				665942A12877DD1C0096A5DB /* CropData.swift in Sources */,
 				FEDAAD8625205CC300D95667 /* RatioSelector.swift in Sources */,

@@ -50,7 +50,7 @@ class CropView: UIView {
     let imageContainer: ImageContainerProtocol
     let cropAuxiliaryIndicatorView: CropAuxiliaryIndicatorViewProtocol
     let cropWorkbenchView: CropWorkbenchViewProtocol
-    let cropMaskViewManager: CropMaskViewManagerProtocol
+    let cropMaskViewManager: CropMaskViewManagerProtocol?
     
     var rotationDial: RotationDialProtocol? {
         didSet {
@@ -94,7 +94,7 @@ class CropView: UIView {
         cropAuxiliaryIndicatorView: CropAuxiliaryIndicatorViewProtocol,
         imageContainer: ImageContainerProtocol,
         cropWorkbenchView: CropWorkbenchViewProtocol,
-        cropMaskViewManager: CropMaskViewManagerProtocol
+        cropMaskViewManager: CropMaskViewManagerProtocol?
     ) {
         self.image = image
         self.cropViewConfig = cropViewConfig
@@ -129,7 +129,7 @@ class CropView: UIView {
             cropRatio = self.cropAuxiliaryIndicatorView.frame.width / self.cropAuxiliaryIndicatorView.frame.height
         }
         
-        cropMaskViewManager.adaptMaskTo(match: cropBoxFrame, cropRatio: cropRatio)
+        cropMaskViewManager?.adaptMaskTo(match: cropBoxFrame, cropRatio: cropRatio)
     }
     
     private func initialRender() {
@@ -139,7 +139,10 @@ class CropView: UIView {
     }
     
     private func render(by viewStatus: CropViewStatus) {
+      if cropViewConfig.showAuxiliaryIndicator {
         cropAuxiliaryIndicatorView.isHidden = false
+      }
+        
         
         switch viewStatus {
         case .initial:
@@ -147,26 +150,28 @@ class CropView: UIView {
         case .rotating:
             rotateCropWorkbenchView()
         case .degree90Rotating:
-            cropMaskViewManager.showVisualEffectBackground(animated: true)
+            cropMaskViewManager?.showVisualEffectBackground(animated: true)
+          if cropViewConfig.showAuxiliaryIndicator {
             cropAuxiliaryIndicatorView.isHidden = true
+          }
             rotationDial?.isHidden = true
         case .touchImage:
-            cropMaskViewManager.showDimmingBackground(animated: true)
+            cropMaskViewManager?.showDimmingBackground(animated: true)
             cropAuxiliaryIndicatorView.gridLineNumberType = .crop
             cropAuxiliaryIndicatorView.setGrid(hidden: false, animated: true)
         case .touchCropboxHandle(let tappedEdge):
             cropAuxiliaryIndicatorView.handleIndicatorHandleTouched(with: tappedEdge)
             rotationDial?.isHidden = true
-            cropMaskViewManager.showDimmingBackground(animated: true)
+            cropMaskViewManager?.showDimmingBackground(animated: true)
         case .touchRotationBoard:
             cropAuxiliaryIndicatorView.gridLineNumberType = .rotate
             cropAuxiliaryIndicatorView.setGrid(hidden: false, animated: true)
-            cropMaskViewManager.showDimmingBackground(animated: true)
+            cropMaskViewManager?.showDimmingBackground(animated: true)
         case .betweenOperation:
             cropAuxiliaryIndicatorView.handleEdgeUntouched()
             rotationDial?.isHidden = false
             adaptAngleDashboardToCropBox()
-            cropMaskViewManager.showVisualEffectBackground(animated: true)
+            cropMaskViewManager?.showVisualEffectBackground(animated: true)
             checkImageStatusChanged()
         }
     }
@@ -201,7 +206,7 @@ class CropView: UIView {
     }
     
     func resetComponents() {
-        cropMaskViewManager.setup(in: self, cropRatio: CGFloat(getImageHorizontalToVerticalRatio()))
+        cropMaskViewManager?.setup(in: self, cropRatio: CGFloat(getImageHorizontalToVerticalRatio()))
         
         viewModel.resetCropFrame(by: getInitialCropBoxRect())
         cropWorkbenchView.resetImageContent(by: viewModel.cropBoxFrame)
@@ -234,6 +239,9 @@ class CropView: UIView {
     private func setupCropAuxiliaryIndicatorView() {
         cropAuxiliaryIndicatorView.isUserInteractionEnabled = false
         cropAuxiliaryIndicatorView.gridHidden = true
+      if cropViewConfig.showAuxiliaryIndicator == false {
+        cropAuxiliaryIndicatorView.isHidden = true
+      }
         addSubview(cropAuxiliaryIndicatorView)
     }
     

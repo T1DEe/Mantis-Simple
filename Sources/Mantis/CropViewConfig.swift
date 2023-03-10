@@ -39,6 +39,8 @@ public struct CropViewConfig {
     public var dialConfig = DialConfig()
     
     public var showRotationDial = true
+    public var showDimming = true
+    public var showAuxiliaryIndicator = true
     
     public var padding: CGFloat = 14 {
         didSet {
