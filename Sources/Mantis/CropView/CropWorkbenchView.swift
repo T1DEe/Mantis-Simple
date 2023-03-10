@@ -15,7 +15,7 @@ final class CropWorkbenchView: UIScrollView {
     var touchesCancelled = {}
     var touchesEnded = {}
     
-    private var initialMinimumZoomScale: CGFloat = 1.0
+    private var initialMinimumZoomScale: CGFloat = 2.0
     
     deinit {
         print("CropWorkbenchView deinit")
